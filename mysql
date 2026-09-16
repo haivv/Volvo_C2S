@@ -1,0 +1,12 @@
+cd /d C:\mysql\mysql-8.4.9-winx64\bin
+mysql -u root -p -h 127.0.0.1 -P 3307
+
+mysql -u root -p -h 127.0.0.1 -P 3307 -e "SHOW DATABASES;"
+
+Back up
+mkdir C:\volvo\backup
+mysqldump -u root -p -h 127.0.0.1 -P 3307 --databases volvo_parts --result-file=C:\volvo\backup\volvo_parts_20260916.sql
+
+
+Delete
+mysql -u root -p -h 127.0.0.1 -P 3307 -e "DROP DATABASE volvo_parts;"
