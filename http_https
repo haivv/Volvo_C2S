@@ -1,0 +1,22 @@
+Sửa ở 3 chỗ trong bin/www, tất cả nằm trong file bạn đang mở:
+
+1. bin/www:37 — chỗ chính (đúng 4 dòng bạn bôi đen lúc nãy, giờ gom thành 1 dòng):
+
+
+// TRƯỚC
+var redirectServer = http.createServer(function (req, res) {
+  res.writeHead(301, { Location: 'https://' + req.headers.host + req.url });
+  res.end();
+});
+
+// SAU
+var httpServer = http.createServer(app);
+2. bin/www:43 — đổi tên biến cho khớp:
+
+
+var target = chunk[0] === 0x16 ? httpsServer : httpServer;   // trước: redirectServer
+3. bin/www:57 — dòng log khởi động:
+
+
+console.log((useHttps ? 'HTTP + HTTPS' : 'HTTP only') + ' server listening on port ' + port);
+// trước: (useHttps ? 'HTTPS (with HTTP→HTTPS redirect)' : 'HTTP')
