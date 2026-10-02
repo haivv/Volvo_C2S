@@ -10,3 +10,21 @@ mysqldump -u root -p -h 127.0.0.1 -P 3307 --databases volvo_parts --result-file=
 
 Delete
 mysql -u root -p -h 127.0.0.1 -P 3307 -e "DROP DATABASE volvo_parts;"
+
+---Update database
+1. Access folder containing .sql
+2. Access sql 
+	sudo mysql -u root -p
+	Simg@
+
+mysql> DROP DATABASE database_name;
+mysql> CREATE DATABASE IF NOT EXISTS new_database_name;
+mysql> use new_database_name;
+mysql> SOURCE volvo_parts.sql;
+
+mysql information
+  host:            process.env.DB_HOST     || '127.0.0.1',
+  port:            Number(process.env.DB_PORT) || 3306,
+  user:            process.env.DB_USER     || 'root',
+  password:        process.env.DB_PASSWORD || 'Volvo@2026',
+  database:        process.env.DB_NAME     || 'volvo_parts',
